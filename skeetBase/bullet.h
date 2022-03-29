@@ -8,6 +8,8 @@
  ************************************************************************/
 
 #pragma once
+
+#include "uiDraw.h"
 #include "point.h"
 #include "effect.h"
 #include <list>
@@ -26,6 +28,7 @@ protected:
    double radius;             // the size (radius) of the bullet
    bool dead;                 // is this bullet dead?
    int value;                 // how many points does this cost?
+   uiDraw drawTool;
     
 public:
    Bullet(double angle = 0.0, double speed = 30.0, double radius = 5.0, int value = 1);
@@ -52,11 +55,6 @@ protected:
       return (pt.getX() < -radius || pt.getX() >= dimensions.getX() + radius ||
          pt.getY() < -radius || pt.getY() >= dimensions.getY() + radius);
    }
-   void drawLine(const Point& begin, const Point& end,
-                 double red = 1.0, double green = 1.0, double blue = 1.0) const;
-
-   void drawDot(const Point& point, double radius = 2.0,
-                double red = 1.0, double green = 1.0, double blue = 1.0) const;
    int    random(int    min, int    max);
    double random(double min, double max);
 };
@@ -70,7 +68,7 @@ class Pellet : public Bullet
 public:
    Pellet(double angle, double speed = 15.0) : Bullet(angle, speed, 1.0, 1) {}
    
-   void output();
+   void output() { if (!isDead()) drawTool.drawPellet(pt); }
 };
 
 /*********************
@@ -84,7 +82,7 @@ private:
 public:
    Bomb(double angle, double speed = 10.0) : Bullet(angle, speed, 4.0, 4), timeToDie(60) {}
    
-   void output();
+   void output() { if (!isDead()) drawTool.drawBomb(pt, radius); }
    void move(std::list<Effect*> & effects);
    void death(std::list<Bullet *> & bullets);
 };
@@ -110,7 +108,7 @@ public:
       radius = 3.0;
    }
    
-   void output();  
+   void output() { if (!isDead()) drawTool.drawShrapnel(pt, radius); }
    void move(std::list<Effect*> & effects);
 };
 
@@ -124,7 +122,7 @@ class Missile : public Bullet
 public:
    Missile(double angle, double speed = 10.0) : Bullet(angle, speed, 1.0, 3) {}
    
-   void output();
+   void output() { if (!isDead()) drawTool.drawShrapnel(pt, radius); }
    void input(bool isUp, bool isDown, bool isB)
    {
       if (isUp)

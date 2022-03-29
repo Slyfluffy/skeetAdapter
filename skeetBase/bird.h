@@ -9,6 +9,7 @@
 
 #pragma once
 #include "point.h"
+#include "uiDraw.h"
 
 /**********************
  * BIRD
@@ -23,6 +24,7 @@ protected:
    double radius;             // the size (radius) of the flyer
    bool dead;                 // is this flyer dead?
    int points;                // how many points is this worth?
+   uiDraw drawTool;
    
 public:
    Bird() : dead(false), points(0), radius(1.0) { }
@@ -56,9 +58,9 @@ public:
 class Standard : public Bird
 {
 public:
-    Standard(double radius = 25.0, double speed = 5.0, int points = 10);
-    void draw();
-    void advance();
+   Standard(double radius = 25.0, double speed = 5.0, int points = 10);
+   void draw() { if (!isDead()) drawTool.drawStandard(pt, radius); }
+   void advance();
 };
 
 /*********************************************
@@ -68,9 +70,9 @@ public:
 class Floater : public Bird
 {
 public:
-    Floater(double radius = 30.0, double speed = 5.0, int points = 15);
-    void draw();
-    void advance();
+   Floater(double radius = 30.0, double speed = 5.0, int points = 15);
+   void draw() { if (!isDead()) drawTool.drawFloater(pt, radius); }
+   void advance();
 };
 
 /*********************************************
@@ -80,9 +82,9 @@ public:
 class Crazy : public Bird
 {
 public:
-    Crazy(double radius = 30.0, double speed = 4.5, int points = 30);
-    void draw();
-    void advance();
+   Crazy(double radius = 30.0, double speed = 4.5, int points = 30);
+   void draw() { if (!isDead()) drawTool.drawCrazy(pt, radius); }
+   void advance();
 };
 
 /*********************************************
@@ -92,7 +94,8 @@ public:
 class Sinker : public Bird
 {
 public:
-    Sinker(double radius = 30.0, double speed = 4.5, int points = 20);
-    void draw();
-    void advance();
+   Sinker(double radius = 30.0, double speed = 4.5, int points = 20);
+   void draw() { if (!isDead()) drawTool.drawSinker(pt, radius); }
+   void advance();
 };
+

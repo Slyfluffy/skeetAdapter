@@ -8,6 +8,8 @@
  ************************************************************************/
 
 #pragma once
+
+#include "uiDraw.h"
 #include "point.h"
 
 /**********************
@@ -16,8 +18,10 @@
 class Effect
 {
 protected:
-    Point pt;      // location of the effect
-    double age;    // 1.0 = new, 0.0 = dead
+   Point pt;      // location of the effect
+   double age;    // 1.0 = new, 0.0 = dead
+   uiDraw drawTool;
+   
 public:
     // create a fragment based on the velocity and position of the bullet
     Effect(const Point & pt) : pt(pt), age(0.5) {}
@@ -42,14 +46,14 @@ private:
    Velocity v;    // direction the fragment is flying
    double size;   // size of the fragment
 public:
-    // create a fragment based on the velocity and position of the bullet
-    Fragment(const Point & pt, const Velocity & v);
+   // create a fragment based on the velocity and position of the bullet
+   Fragment(const Point & pt, const Velocity & v);
     
-    // draw it
-    void render() const;
+   // draw it
+   void render() const { if (!isDead()) drawTool.drawFragment(pt, age, size); }
     
-    // move it forward with regards to inertia. Let it age
-    void fly();
+   // move it forward with regards to inertia. Let it age
+   void fly();
 };
 
 /**********************
@@ -61,14 +65,14 @@ class Streek : public Effect
 private:
    Point ptEnd;
 public:
-    // create a fragment based on the velocity and position of the bullet
-    Streek(const Point & pt, Velocity v);
+   // create a fragment based on the velocity and position of the bullet
+   Streek(const Point & pt, Velocity v);
     
-    // draw it
-    void render() const;
+   // draw it
+   void render() const { if (!isDead()) drawTool.drawStreek(pt, ptEnd, age); }
     
-    // move it forward with regards to inertia. Let it age
-    void fly();
+   // move it forward with regards to inertia. Let it age
+   void fly();
 };
 
 /**********************
@@ -80,12 +84,12 @@ class Exhaust : public Effect
 private:
    Point ptEnd;
 public:
-    // create a fragment based on the velocity and position of the bullet
-    Exhaust(const Point & pt, Velocity v);
+   // create a fragment based on the velocity and position of the bullet
+   Exhaust(const Point & pt, Velocity v);
     
-    // draw it
-    void render() const;
+   // draw it
+   void render() const { if (!isDead()) drawTool.drawExhaust(pt, ptEnd, age); }
     
-    // move it forward with regards to inertia. Let it age
-    void fly();
+   // move it forward with regards to inertia. Let it age
+   void fly();
 };

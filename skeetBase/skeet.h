@@ -45,10 +45,6 @@ public:
 private:
     // generate new birds
     void spawn();                  
-    void drawBackground(double redBack, double greenBack, double blueBack) const;
-    void drawTimer(double percent,
-                   double redFore, double greenFore, double blueFore,
-                   double redBack, double greenBack, double blueBack) const;
     
     Gun gun;                       // the gun
     std::list<Bird*> birds;        // all the shootable birds
@@ -58,4 +54,5 @@ private:
     Score score;                   // the player's score
     HitRatio hitRatio;               // the hit ratio for the birds
     Point dimensions;              // size of the screen
+   uiDraw drawTool;
 };

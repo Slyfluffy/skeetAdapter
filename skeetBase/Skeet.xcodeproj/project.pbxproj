@@ -19,6 +19,7 @@
 		C1D4EAED2577F57B002B56E3 /* uiInteract.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1D4EAE52577F576002B56E3 /* uiInteract.cpp */; };
 		C1D4EAF22577F58C002B56E3 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1D4EAF02577F58C002B56E3 /* GLUT.framework */; };
 		C1D4EAF32577F58C002B56E3 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1D4EAF12577F58C002B56E3 /* OpenGL.framework */; };
+		CEE62F9227F3C6B1004DF6E9 /* uiDraw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEE62F9127F3C6B1004DF6E9 /* uiDraw.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -56,6 +57,8 @@
 		C1D4EAE62577F578002B56E3 /* uiInteract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uiInteract.h; sourceTree = "<group>"; };
 		C1D4EAF02577F58C002B56E3 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		C1D4EAF12577F58C002B56E3 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		CEE62F9027F3C536004DF6E9 /* uiDraw.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = uiDraw.h; sourceTree = "<group>"; };
+		CEE62F9127F3C6B1004DF6E9 /* uiDraw.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = uiDraw.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +94,8 @@
 				C16F25482716733A000FA407 /* time.cpp */,
 				C1D4EAE42577F575002B56E3 /* point.h */,
 				C1D4EAE12577F574002B56E3 /* point.cpp */,
+				CEE62F9027F3C536004DF6E9 /* uiDraw.h */,
+				CEE62F9127F3C6B1004DF6E9 /* uiDraw.cpp */,
 				C1D4EAE62577F578002B56E3 /* uiInteract.h */,
 				C1D4EAE52577F576002B56E3 /* uiInteract.cpp */,
 				C1D4EAD42577F487002B56E3 /* Products */,
@@ -175,6 +180,7 @@
 				C1D4EAED2577F57B002B56E3 /* uiInteract.cpp in Sources */,
 				C184132A273E9C4900143AB2 /* bullet.cpp in Sources */,
 				C15451E627403ED30095997B /* effect.cpp in Sources */,
+				CEE62F9227F3C6B1004DF6E9 /* uiDraw.cpp in Sources */,
 				C184132C273E9C4900143AB2 /* bird.cpp in Sources */,
 				C1D4EAEA2577F57B002B56E3 /* point.cpp in Sources */,
 				C16F25492716733A000FA407 /* time.cpp in Sources */,
